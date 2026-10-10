@@ -1,0 +1,175 @@
+Section C: 10 Marks (Long Answer / Numerical)
+
+Q3. Circular Queue: Write the full implementation. Explain the front/rear modulo logic and the full and empty conditions.
+
+Answer:
+
+A circular queue is a linear data structure in which the last position is connected to the first position. It reuses empty spaces created after deletion.
+
+Variables:
+
+- "front = -1"
+- "rear = -1"
+- "N" = size of the queue
+
+ENQUEUE(x) Algorithm:
+
+1. If "(rear + 1) % N == front", the queue is full.
+2. If "front == -1", set "front = 0".
+3. Set "rear = (rear + 1) % N".
+4. Store "x" at "queue[rear]".
+
+DEQUEUE() Algorithm:
+
+1. If "front == -1", the queue is empty.
+2. Store "queue[front]" as the deleted element.
+3. If "front == rear", set "front = rear = -1".
+4. Otherwise, set "front = (front + 1) % N".
+5. Return the deleted element.
+
+Modulo Logic:
+
+The modulo operator "%" brings the index back to zero when it reaches the end of the array.
+
+Example: If N = 5 and rear = 4:
+
+"(rear + 1) % N = (4 + 1) % 5 = 0"
+
+Conditions:
+
+- Empty: "front == -1"
+- Full: "(rear + 1) % N == front"
+
+Complexity:
+
+- Enqueue: O(1)
+- Dequeue: O(1)
+
+Q4. Implement a queue using two stacks and analyze the complexity of both operations.
+
+Answer:
+
+A queue follows FIFO (First In, First Out), whereas a stack follows LIFO (Last In, First Out). Two stacks can be used to implement a queue.
+
+Let the two stacks be "S1" and "S2".
+
+ENQUEUE(x):
+
+1. Push element x into S1.
+
+DEQUEUE():
+
+1. If S2 is empty, transfer all elements from S1 to S2 by popping from S1 and pushing into S2.
+2. If S2 is still empty, the queue is empty.
+3. Otherwise, pop and return the top element of S2.
+
+Example:
+
+Enqueue 10, 20, 30.
+
+S1 contains: 10, 20, 30 (30 is on top).
+
+Transfer to S2.
+
+S2 contains: 30, 20, 10 (10 is on top).
+
+Dequeue returns 10 first, following FIFO.
+
+Time Complexity:
+
+- Enqueue: O(1)
+- Dequeue: O(1) amortized; O(n) in the worst case when transferring elements.
+
+Space Complexity: O(n)
+
+Q5. Implement a stack using two queues and analyze the complexity of push and pop.
+
+Answer:
+
+A stack follows LIFO (Last In, First Out). Two queues can be used to implement a stack.
+
+Let the queues be "Q1" and "Q2". This implementation makes PUSH costly.
+
+PUSH(x):
+
+1. Insert x into Q2.
+2. Move all elements from Q1 to Q2.
+3. Swap Q1 and Q2.
+
+POP():
+
+1. If Q1 is empty, report Stack Underflow.
+2. Otherwise, remove and return the front element of Q1.
+
+Example:
+
+Push 10: Q1 = [10]
+
+Push 20: Q1 = [20, 10]
+
+Push 30: Q1 = [30, 20, 10]
+
+Pop returns 30.
+
+Time Complexity:
+
+- Push: O(n)
+- Pop: O(1)
+
+Space Complexity: O(n)
+
+Q8. Make a complexity comparison table of array, stack and queue and state when to use which.
+
+Answer:
+
+The time complexity of common operations is shown below. The table assumes a normal array and stack/queue implementations that do not require shifting for their basic operations.
+
+Operation| Array| Stack| Queue
+Access by index| O(1)| Not normally supported| Not normally supported
+Search| O(n)| O(n)| O(n)
+Insert at beginning| O(n)| Depends on implementation| Depends on implementation
+Insert at end| O(1) if space is available| Push: O(1)| Enqueue: O(1)
+Remove from end| O(1)| Pop: O(1)| Depends on implementation
+Remove from front| O(n) in a simple array| Not a basic operation| Dequeue: O(1) with a suitable implementation
+
+When to use each:
+
+1. Array: Use it when you need indexed access and store elements in an ordered collection.
+2. Stack: Use it for undo operations, recursion, expression evaluation and backtracking.
+3. Queue: Use it for scheduling, waiting lists, printer jobs and breadth-first search.
+
+Q9. Priority Queue: Array vs Heap implementation with insertion/deletion complexity.
+
+Answer:
+
+A priority queue is a data structure in which elements are removed according to their priority. In a max-priority queue, the highest-priority or largest element is removed first.
+
+1. Array Implementation
+
+An array can store elements in sorted or unsorted order.
+
+- Unsorted Array:
+  
+  - Insertion: O(1)
+  - Deletion of highest-priority element: O(n), because the array must be searched.
+
+- Sorted Array:
+  
+  - Insertion: O(n), because elements may need shifting.
+  - Deletion of highest-priority element: O(1), if it is kept at the end.
+
+2. Heap Implementation
+
+A binary heap is a complete binary tree commonly stored in an array.
+
+- Insertion: O(log n), because the new element may move up the heap.
+- Deletion of the highest-priority element: O(log n), because the last element replaces the root and moves down.
+- Access to the highest-priority element: O(1), because it is at the root.
+
+Comparison Table
+
+Operation| Unsorted Array| Sorted Array| Binary Heap
+Insert| O(1)| O(n)| O(log n)
+Remove highest priority| O(n)| O(1)| O(log n)
+View highest priority| O(n)| O(1)| O(1)
+

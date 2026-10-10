@@ -1,0 +1,293 @@
+Section D: Additional Algorithm Questions
+
+ARRAY
+
+Q1. Insert an element into a sorted array so that it stays sorted. State the complexity.
+
+Answer:
+
+A sorted array stores elements in increasing or decreasing order. To insert a new element, we shift larger elements to the right.
+
+Algorithm:
+
+1. Read the sorted array A, size n, and element x.
+2. Set "i = n - 1".
+3. While "i >= 0" and "A[i] > x":
+   - Set "A[i+1] = A[i]".
+   - Decrease i by 1.
+4. Set "A[i+1] = x".
+5. Increase the array size by 1.
+
+Example:
+
+Array: 10, 20, 40, 50
+
+Insert: 30
+
+Output: 10, 20, 30, 40, 50
+
+Complexity:
+
+- Time: O(n)
+- Auxiliary Space: O(1)
+
+Q2. Remove duplicates from a sorted array in-place.
+
+Answer:
+
+Removing duplicates means keeping only one occurrence of each element. Since the array is sorted, duplicate elements are adjacent.
+
+Algorithm:
+
+1. If the array is empty, return 0.
+2. Set "j = 0".
+3. Traverse the array from "i = 1" to "n-1".
+4. If "A[i] != A[j]":
+   - Increase j by 1.
+   - Set "A[j] = A[i]".
+5. The new size of the array is "j + 1".
+
+Example:
+
+Input: 1, 1, 2, 2, 3, 4, 4
+
+Output: 1, 2, 3, 4
+
+New size: 4
+
+Complexity:
+
+- Time: O(n)
+- Auxiliary Space: O(1)
+
+Q3. Delete all occurrences of a given value from an array in-place.
+
+Answer:
+
+This operation removes every occurrence of a given value without creating another array.
+
+Algorithm:
+
+1. Set "k = 0".
+2. Traverse every element of the array.
+3. If "A[i]" is not equal to the target value:
+   - Set "A[k] = A[i]".
+   - Increase k by 1.
+4. Return k as the new logical size.
+
+Example:
+
+Input: 2, 3, 2, 4, 2, 5
+
+Target: 2
+
+Output: 3, 4, 5
+
+New size: 3
+
+Complexity:
+
+- Time: O(n)
+- Auxiliary Space: O(1)
+
+Q4. Merge two sorted arrays into one sorted array.
+
+Answer:
+
+Merging combines two sorted arrays into a single sorted array.
+
+Algorithm:
+
+1. Set "i = 0", "j = 0", and "k = 0".
+2. Compare the current elements of both arrays.
+3. Copy the smaller element into the result array.
+4. Increase the corresponding index.
+5. Repeat until one array is exhausted.
+6. Copy the remaining elements of the other array.
+
+Example:
+
+Array A: 1, 3, 5
+
+Array B: 2, 4, 6
+
+Merged Array: 1, 2, 3, 4, 5, 6
+
+Complexity:
+
+- Time: O(n + m)
+- Auxiliary Space: O(n + m)
+
+Q6. Find the largest and second largest elements in an array in a single traversal.
+
+Answer:
+
+We can find the largest and second largest distinct elements by traversing the array only once.
+
+Algorithm:
+
+1. Initialize "largest" and "second" as undefined.
+2. Traverse every element x.
+3. If x is greater than largest:
+   - Set "second = largest".
+   - Set "largest = x".
+4. Otherwise, if x is smaller than largest and greater than second, set "second = x".
+5. At the end, display both values if a second distinct largest element exists.
+
+Example:
+
+Input: 10, 25, 8, 20, 25
+
+Largest: 25
+
+Second Largest Distinct: 20
+
+Complexity:
+
+- Time: O(n)
+- Auxiliary Space: O(1)
+
+STACK
+
+Q9. Convert a decimal number to binary using a stack.
+
+Answer:
+
+A stack can convert a decimal number into binary by storing the remainders obtained after repeated division by 2.
+
+Algorithm:
+
+1. Read the decimal number n.
+2. If n is 0, print 0.
+3. While n is greater than 0:
+   - Calculate "remainder = n % 2".
+   - Push the remainder onto the stack.
+   - Set "n = n / 2" using integer division.
+4. Pop and print all elements of the stack.
+
+Example:
+
+Decimal Number: 13
+
+Division remainders: 1, 0, 1, 1
+
+Popping from the stack gives:
+
+Binary Number: 1101
+
+Complexity:
+
+- Time: O(log n)
+- Space: O(log n)
+
+Q10. Check whether a string is a palindrome using a stack.
+
+Answer:
+
+A palindrome is a word or string that reads the same forward and backward.
+
+Algorithm:
+
+1. Read the string.
+2. Push every character onto the stack.
+3. Traverse the original string from left to right.
+4. Pop one character for each position and compare it with the original character.
+5. If any characters differ, the string is not a palindrome.
+6. If all characters match, the string is a palindrome.
+
+Example 1:
+
+Input: MADAM
+
+Output: Palindrome
+
+Example 2:
+
+Input: HELLO
+
+Output: Not a Palindrome
+
+Complexity:
+
+- Time: O(n)
+- Space: O(n)
+
+Q11. Delete the middle element of a stack.
+
+Answer:
+
+The middle element can be deleted using recursion without using another stack.
+
+Algorithm:
+
+1. Find the stack size n.
+2. Calculate the middle position "k = n / 2" using integer division for zero-based indexing.
+3. If k is 0, pop the top element and return.
+4. Otherwise, pop the top element and store it temporarily.
+5. Recursively delete the middle element from the remaining stack.
+6. Push the stored element back onto the stack.
+
+Example:
+
+Stack from bottom to top: 10, 20, 30, 40, 50
+
+Middle element: 30
+
+After deletion: 10, 20, 40, 50
+
+Complexity:
+
+- Time: O(n)
+- Auxiliary Space: O(n) due to recursion.
+
+Q12. Insert an element at the bottom of a stack using recursion.
+
+Answer:
+
+Recursion allows us to insert an element at the bottom without using another stack.
+
+Algorithm:
+
+1. If the stack is empty, push the new element and return.
+2. Otherwise, pop the top element and store it.
+3. Recursively insert the new element into the remaining stack.
+4. Push the stored element back onto the stack.
+
+Example:
+
+Original Stack from bottom to top: 10, 20, 30
+
+Insert at bottom: 5
+
+Result: 5, 10, 20, 30
+
+Complexity:
+
+- Time: O(n)
+- Auxiliary Space: O(n)
+
+Q13. Sort a stack using a temporary stack.
+
+Answer:
+
+A temporary stack can be used to arrange elements in sorted order.
+
+Algorithm:
+
+1. Create an empty temporary stack T.
+2. While the original stack S is not empty:
+   - Pop the top element x from S.
+   - While T is not empty and its top element is greater than x, pop from T and push into S.
+   - Push x onto T.
+3. Move all elements from T back to S if the required output is a stack with the smallest element on top.
+
+Example:
+
+Input elements: 30, 10, 40, 20
+
+Sorted order from bottom to top: 40, 30, 20, 10
+
+Complexity:
+
+- Time: O(n²) in the worst case
+- Auxiliary Space: O(n)

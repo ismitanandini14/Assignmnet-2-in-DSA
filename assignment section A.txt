@@ -1,0 +1,90 @@
+Assignment 2
+
+Data Structures: Array, Stack and Queue
+
+Section A: 2 Marks (Short / Definition)
+
+Q1. What is a data structure? Differentiate between linear and non-linear data structures.
+
+A data structure is a way of organizing and storing data in a computer.
+
+- Linear Data Structure: Elements are arranged sequentially. Examples: Array, Stack and Queue.
+- Non-linear Data Structure: Elements are arranged hierarchically or in a network. Examples: Tree and Graph.
+
+Q2. What is an array? Write two advantages and two disadvantages.
+
+An array is a linear data structure that stores elements of the same type in consecutive memory locations.
+
+Advantages:
+
+1. Elements can be accessed directly using an index.
+2. Traversing an array is easy.
+
+Disadvantages:
+
+1. Its size is usually fixed.
+2. Insertion and deletion may require shifting elements.
+
+Q3. Why is random access in an array O(1)?
+
+Array elements can be accessed directly using their index. The memory address is calculated using a formula, so access takes constant time, O(1).
+
+Q4. What are row-major and column-major order?
+
+- Row-major order: Array elements are stored row by row in memory.
+- Column-major order: Array elements are stored column by column in memory.
+
+Q5. What is a stack? Explain the LIFO principle.
+
+A stack is a linear data structure that follows the LIFO (Last In, First Out) principle. The element inserted last is removed first.
+
+Example: A stack of plates.
+
+Q6. What are stack overflow and stack underflow?
+
+- Stack Overflow: It occurs when an element is pushed into a full stack.
+- Stack Underflow: It occurs when an element is removed from an empty stack.
+
+Q7. What is a queue? Explain the FIFO principle.
+
+A queue is a linear data structure that follows the FIFO (First In, First Out) principle. The element inserted first is removed first.
+
+Insertion takes place at the rear and deletion takes place at the front.
+
+Q8. Write the four types of queues.
+
+The four types of queues are:
+
+1. Linear Queue
+2. Circular Queue
+3. Priority Queue
+4. Double-Ended Queue (Deque)
+
+Q9. What is a priority queue?
+
+A priority queue is a data structure in which every element has a priority. Elements are removed according to their priority.
+
+Q10. What is a deque?
+
+A deque (Double-Ended Queue) is a queue in which insertion and deletion can be performed at both the front and the rear.
+
+Q11. What is a call stack?
+
+A call stack is a stack used by a program to manage function calls. It stores information about active functions, including their local variables and return addresses.
+
+Q12. Write three real-life applications of a stack.
+
+1. Undo and redo operations in text editors.
+2. Browser back-button history.
+3. Function calls and recursion.
+
+Q13. Write three real-life applications of a queue.
+
+1. People waiting in a line.
+2. Printer job scheduling.
+3. Customer service call management.
+
+Q14. What are time complexity and space complexity?
+
+- Time Complexity: It describes how the running time of an algorithm grows with input size.
+- Space Complexity: It describes how much memory an algorithm requires as input size grows.

@@ -1,0 +1,339 @@
+Section B
+
+ARRAY
+
+Q4. Reverse an array in-place and state its complexity.
+
+Answer:
+
+Reversing an array means arranging its elements in reverse order. In-place reversal does not require another array.
+
+Algorithm:
+
+1. Start.
+2. Set "i = 0" and "j = n - 1".
+3. Swap "A[i]" and "A[j]".
+4. Increase "i" and decrease "j".
+5. Repeat until "i >= j".
+6. Stop.
+
+Example:
+
+Original Array: 10, 20, 30, 40, 50
+
+Reversed Array: 50, 40, 30, 20, 10
+
+Complexity:
+
+- Time Complexity: O(n)
+- Auxiliary Space Complexity: O(1)
+
+Q5. Rotate an array by k positions.
+
+Answer:
+
+Array rotation means moving elements from one position to another in a circular manner.
+
+Algorithm for right rotation:
+
+1. Read array A of size n and value k.
+2. Calculate "k = k % n".
+3. Reverse the entire array.
+4. Reverse the first k elements.
+5. Reverse the remaining n-k elements.
+6. Display the array.
+
+Example:
+
+Array: 1, 2, 3, 4, 5
+
+k = 2
+
+Output: 4, 5, 1, 2, 3
+
+Complexity:
+
+- Time Complexity: O(n)
+- Auxiliary Space Complexity: O(1)
+
+Q6. Write the address calculation formula for a 2D array (row-major / column-major) and solve one numerical.
+
+Answer:
+
+Let:
+
+- "BA" = Base address
+- "w" = Size of each element in bytes
+- "M" = Number of rows
+- "N" = Number of columns
+- "i, j" = Row and column indices
+- "LR, LC" = Lower bounds of rows and columns
+
+1. Row-major formula:
+
+Address of A[i][j]:
+
+"BA + w × [(i − LR) × N + (j − LC)]"
+
+2. Column-major formula:
+
+Address of A[i][j]:
+
+"BA + w × [(j − LC) × M + (i − LR)]"
+
+Numerical Example:
+
+A 2D array has 3 rows and 4 columns. Base address = 1000, element size = 4 bytes. Find the address of A[2][3], assuming indexing starts from 0.
+
+Row-major calculation:
+
+Address = 1000 + 4 × [(2 × 4) + 3]
+
+Address = 1000 + 4 × 11
+
+Address = 1044
+
+Column-major calculation:
+
+Address = 1000 + 4 × [(3 × 3) + 2]
+
+Address = 1000 + 4 × 11
+
+Address = 1044
+
+STACK
+
+Q7. Implement a stack using an array (push, pop, peek, isEmpty, isFull).
+
+Answer:
+
+A stack follows the LIFO (Last In, First Out) principle. It can be implemented using an array and a variable "top".
+
+Initially, "top = -1".
+
+Algorithms:
+
+1. PUSH(x)
+
+1. If "top == MAX - 1", print "Stack Overflow".
+2. Otherwise, set "top = top + 1".
+3. Set "stack[top] = x".
+
+2. POP()
+
+1. If "top == -1", print "Stack Underflow".
+2. Otherwise, return "stack[top]" and decrease "top" by 1.
+
+3. PEEK()
+
+1. If "top == -1", print "Stack is Empty".
+2. Otherwise, return "stack[top]".
+
+4. isEmpty()
+
+Return true if "top == -1"; otherwise return false.
+
+5. isFull()
+
+Return true if "top == MAX - 1"; otherwise return false.
+
+Complexity: Push, Pop and Peek take O(1) time.
+
+Q8. Write push and pop using a linked list.
+
+Answer:
+
+A stack can be implemented using a linked list. The "top" pointer points to the first node.
+
+PUSH(x):
+
+1. Create a new node.
+2. Store x in the node.
+3. Set "newNode.next = top".
+4. Set "top = newNode".
+
+POP():
+
+1. If "top == NULL", print "Stack Underflow".
+2. Otherwise, store "top" in a temporary pointer.
+3. Move "top = top.next".
+4. Delete the temporary node.
+
+Complexity:
+
+- Push: O(1)
+- Pop: O(1)
+
+Q9. Reverse a string using a stack.
+
+Answer:
+
+A stack can reverse a string because it follows the LIFO principle.
+
+Algorithm:
+
+1. Read a string.
+2. Push each character onto the stack.
+3. Pop characters one by one.
+4. Store the popped characters in a new string.
+5. Display the reversed string.
+
+Example:
+
+Input: HELLO
+
+Output: OLLEH
+
+Complexity:
+
+- Time Complexity: O(n)
+- Space Complexity: O(n)
+
+Q10. Find the Next Greater Element using a stack.
+
+Answer:
+
+The Next Greater Element (NGE) of an element is the first greater element on its right. If no greater element exists, the answer is -1.
+
+Algorithm:
+
+1. Create an empty stack.
+2. Traverse the array from right to left.
+3. While the stack is not empty and its top element is less than or equal to the current element, pop it.
+4. If the stack is empty, NGE is -1; otherwise, NGE is the top element.
+5. Push the current element onto the stack.
+6. Display the answers in the original order.
+
+Example:
+
+Array: 4, 5, 2, 10
+
+Next Greater Elements: 5, 10, 10, -1
+
+Complexity:
+
+- Time Complexity: O(n)
+- Space Complexity: O(n)
+
+QUEUE
+
+Q12. Implement a queue using an array (enqueue, dequeue).
+
+Answer:
+
+A queue follows the FIFO (First In, First Out) principle.
+
+Initially, "front = -1" and "rear = -1".
+
+ENQUEUE(x):
+
+1. If "rear == MAX - 1", print "Queue Overflow".
+2. If "front == -1", set "front = 0".
+3. Increase "rear" by 1.
+4. Store x at "queue[rear]".
+
+DEQUEUE():
+
+1. If "front == -1" or "front > rear", print "Queue Underflow".
+2. Otherwise, remove "queue[front]".
+3. Increase "front" by 1.
+4. If "front > rear", reset "front = rear = -1".
+
+Complexity: Enqueue and Dequeue take O(1) time, excluding any shifting or resizing.
+
+Q13. Implement a queue using a linked list.
+
+Answer:
+
+A linked-list queue uses two pointers: "front" and "rear".
+
+ENQUEUE(x):
+
+1. Create a new node containing x.
+2. If the queue is empty, set both "front" and "rear" to the new node.
+3. Otherwise, link "rear.next" to the new node.
+4. Set "rear" to the new node.
+
+DEQUEUE():
+
+1. If "front == NULL", print "Queue Underflow".
+2. Otherwise, move "front" to "front.next".
+3. If "front == NULL", set "rear = NULL".
+
+Complexity:
+
+- Enqueue: O(1)
+- Dequeue: O(1)
+
+Q14. Explain deque operations (insert/delete from both ends).
+
+Answer:
+
+A deque (Double-Ended Queue) is a linear data structure in which insertion and deletion are possible at both ends.
+
+Operations:
+
+1. "insertFront(x)": Inserts an element at the front.
+2. "insertRear(x)": Inserts an element at the rear.
+3. "deleteFront()": Removes an element from the front.
+4. "deleteRear()": Removes an element from the rear.
+
+Example:
+
+Insert 10 at rear → [10]
+
+Insert 20 at rear → [10, 20]
+
+Insert 5 at front → [5, 10, 20]
+
+Delete rear → [5, 10]
+
+Complexity: Each operation takes O(1) time when implemented using a circular array or a doubly linked list.
+
+Q15. Reverse a queue with the help of a stack.
+
+Answer:
+
+A stack can reverse a queue because a stack follows LIFO.
+
+Algorithm:
+
+1. Create an empty stack.
+2. Remove each element from the queue and push it onto the stack.
+3. Pop each element from the stack and insert it into the queue.
+4. The queue is now reversed.
+
+Example:
+
+Original Queue: 10, 20, 30, 40
+
+Reversed Queue: 40, 30, 20, 10
+
+Complexity:
+
+- Time Complexity: O(n)
+- Auxiliary Space Complexity: O(n)
+
+Q16. Generate binary numbers from 1 to n using a queue.
+
+Answer:
+
+A queue can generate binary numbers in increasing order.
+
+Algorithm:
+
+1. Create an empty queue.
+2. Insert the string "1" into the queue.
+3. Repeat n times:
+   - Remove the front string and display it.
+   - Append "0" to the string and insert the result into the queue.
+   - Append "1" to the string and insert the result into the queue.
+4. Stop.
+
+Example:
+
+For n = 5:
+
+Output: 1, 10, 11, 100, 101
+
+Complexity: O(n) queue operations, excluding the cost of string creation and output.
